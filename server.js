@@ -17,6 +17,10 @@ app.get('/', (request, response) => {
   response.render('./pages/index');
 });
 
+app.post('/search', (request, response) => {
+  response.render('./new.ejs', { root: './public' });
+});
+
 app.listen(PORT, () => {
   console.log('App is up on port : ' + PORT);
 });
