@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/base.css">
+  <link rel="stylesheet" type="text/css" href="styles/layout.css">
+  <link rel="stylesheet" type="text/css" href="styles/modules.css">
+  <title>Search result</title>
+</head>
+<body>
+  <header>
+    <h1>Search results</h1>
+  </header>
+    <main>
+      <% books.forEach(function(book){ %>
+        <div class='book'><h2><%= book.title %> </h2>
+             <p><%= book.authors %> </p>
+             <p><%= book.description %> </p>
+             <img src=<%= book.image_url %>/></div>
+      <% }) %>
+        </main>
+</body>
+</html>
