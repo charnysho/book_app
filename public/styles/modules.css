@@ -1,0 +1,25 @@
+h1 {
+  font-size: 35px;
+}
+
+.book h2 {
+  font-size: 20px;
+  padding: 5px;
+}
+
+.book p {
+  font-size: 15px;
+  padding: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.book {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #393e46;
+  margin-bottom: 30px;
+}
