@@ -10,6 +10,7 @@
   <h1>Search</h1>
   <a href="searches/new">New search</a>
   <div><b>Total books: </b> <%= count %></div>
-  <%- include('../partials/bookDisplay', { books }) %>
-  
+  <% books.forEach(function(book){ %>
+    <%- include('../partials/detail', { book }) %>
+  <% }) %>
 </h

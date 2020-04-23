@@ -47,28 +47,43 @@ app.get('/', (request, response) => {
         response.render('pages/index', { books: results.rows, count: results.rowCount });
       }
     })
-    .catch(error =>
-      errorHandler(error, request, response));
+    .catch(error => errorHandler(error, request, response));
 });
 
 app.get('/searches/new', (request, response) => {
   response.render('./pages/searches/new');
 });
 
-app.get('/books', (request, response) => response.send('no id present'));
+app.get('/books', (request, response) => {
+  let selectQuery = 'SELECT * FROM books;';
+  return dbClient.query(selectQuery)
+    .then(results => {
+      if (results.rowCount === 0) {
+        console.log('RENDER FROM DB');
+        response.render('pages/searches/new');
+      } else {
+        response.render('pages/details', { books: results.rows, count: results.rowCount });
+      }
+    })
+    .catch(error => errorHandler(error, request, response));
+});
 
 app.get('/books/:id', (request, response) => {
-  const bookId = request.params.id; // not onoly do we want to attach data, but we want influence our routing.
+  const bookId = request.params.id;
 
-  request.query; // url query strings : ?key=value
-  request.body; // comes from a more integrated attachment, more data that has specfic types and we might hidden.
+  request.query;
+  request.body;
 
   let selectQuery = `SELECT * FROM books WHERE id=$1;`;
   let selectValues = [bookId];
 
   dbClient.query(selectQuery, selectValues)
     .then(data => {
-      response.send('In Progress');
+      if (data.rows.length > 0) {
+        response.render('pages/detail', { book: data.rows[0] });
+      } else {
+        response.send({ error: 'Not found'});
+      }
     })
     .catch(error => errorHandler(error, request, response));
 });
@@ -99,26 +114,21 @@ app.post('/books', (request, response) => {
 
   dbClient.query(addBookSQL, addBookValues)
     .then(data => {
-      const templateData = { book: data.rows[0] };
-      response.render('pages/details', templateData);
+      response.redirect('books/' + data.rows[0].id);
     })
     .catch(error => errorHandler(error, request, response));
 });
 
-// We want the ability to update a resource
 app.put('/books/:id', (request, response) => {
   const bookId = request.params.id;
   const { title, author, description, image_url, isbn, bookshelf } = request.body;
 
-  // query the db for book that have bookId
 
   let SQL = `UPDATE books SET title=$1, author=$2, description=$3, image_url=$4, isbn=$5, bookshelf=$6 WHERE id=$7 RETURNING *`;
   let values = [title, author, description, image_url, isbn, bookshelf, bookId];
 
-  // Use SQL UPDATE WHERE to modify an the row
   dbClient.query(SQL, values)
     .then(data => {
-      // send back he new row.
       response.send(data.rows);
     })
     .catch(error => errorHandler(error, request, response));
