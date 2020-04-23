@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="styles/base.css">
-  <link rel="stylesheet" type="text/css" href="styles/layout.css">
-  <link rel="stylesheet" type="text/css" href="styles/modules.css">
+  <link rel="stylesheet" type="text/css" href="../styles/reset.css">
+  <link rel="stylesheet" type="text/css" href="../styles/base.css">
   <title>Search result</title>
 </head>
 
@@ -16,41 +15,15 @@
   </header>
   <main>
     <% books.forEach(function(book){ %>
-    <div class='book'>
-      <h2><%= book.title %> </h2>
+    <section class='book'>
+    <div>
+      <h2 id="title"><%= book.title %> </h2>
       <p><%= book.authors %> </p>
       <p><%= book.description %> </p>
-      <img src=<%= book.image_url %> />
-      <form action="/books" method="POST">
-        <fieldset>
-          <label for="title">
-            Title
-            <input type="text" name="title" value="<%= book.title %>">
-          </label>
-          <label for="author">
-            Author
-            <input type="text" name="author" value="<%= book.authors %>">
-          </label>
-          <label for="description">
-            description
-            <input type="text" name="description" value="<%= book.description %>"><br>
-          </label>
-          <label for="image_url">
-            Image Url
-            <input type="text" name="image_url" value="<%= book.image_url %>">
-          </label>
-          <label for="isbn">
-            ISBN
-            <input type="text" name="isbn" value="<%= book.isbn %>">
-          </label>
-          <label for="bookshelf">
-            Bookshelf
-            <input type="text" name="bookshelf" value="Fiction">
-          </label>
-        </fieldset>
-        <button type="submit">Submit</button>
-      </form>
+      <img id="img_url" src=<%= book.image_url %> />
+      <%- include('../../partials/bookForm', { formAction:"add", book }) %>
     </div>
+  </section>
     <% }) %>
   </main>
 </body>

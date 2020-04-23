@@ -1,0 +1,31 @@
+<% let action = formAction === 'update' ? `/books/${book.id}?_method=PUT` : '/books'; %>
+<h2 class="view-title"><%- 'update' === formAction ? "Update book" : "Add A book" %></h2>
+<form id="updateForm" action="<%= action %>" method="POST">
+  <fieldset id="labels">
+    <label for="title">
+      Title
+      <input type="text" name="title" value="<%= book.title %>">
+    </label>
+    <label for="author">
+      Author
+      <input type="text" name="author" value="<%= book.authors %>">
+    </label>
+    <label for="description">
+      description
+      <input type="text" name="description" value="<%= book.description %>"><br>
+    </label>
+    <label for="image_url">
+      Image Url
+      <input type="text" name="image_url" value="<%= book.image_url %>">
+    </label>
+    <label for="isbn">
+      ISBN
+      <input type="text" name="isbn" value="<%= book.isbn %>">
+    </label>
+    <label for="bookshelf">
+      Bookshelf
+      <input type="text" name="bookshelf" value="Fiction">
+    </label>
+  </fieldset>
+  <button id="updateButton" type="submit"><%- 'update' === formAction ? "Update book" : "Add A book" %></button>
+</form>
