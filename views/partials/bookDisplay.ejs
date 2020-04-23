@@ -1,0 +1,6 @@
+<% books.forEach(function(book){ %>
+  <div class='book'><h2><%= book.title %> </h2>
+       <p><%= book.authors %> </p>
+       <p><%= book.description %> </p>
+       <img src=<%= book.image_url %>/></div>
+<% }) %>
