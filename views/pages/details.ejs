@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Details</title>
+</head>
+
+<body>
+  <% books.forEach(function(book){ %>
+    <%- include('../partials/detail', { book }) %>
+    <form action="/books/<%= book.id %>?_method=PUT" method="POST">
+      <input type="text" name="title" value="<%= book.title %>">
+      <input type="text" name="author" value="<%= book.authors %>">
+      <input type="text" name="description" value="<%= book.description %>">
+      <input type="text" name="isbn" value="<%= book.isbn %>">
+      <input type="text" name="image_url" value="<%= book.image_url %>">
+      <input type="text" name="bookshelf" value="<%= book.bookshelf %>">
+      <button type="submit">Submit</button>
+    </form>
+  <% }) %>
+</body>
+
+</html>

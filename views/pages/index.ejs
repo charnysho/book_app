@@ -9,5 +9,8 @@
 <body>
   <h1>Search</h1>
   <a href="searches/new">New search</a>
-</body>
+  <div><b>Total books: </b> <%= count %></div>
+  <% books.forEach(function(book){ %>
+    <%- include('../partials/detail', { book }) %>
+  <% }) %>
 </h
