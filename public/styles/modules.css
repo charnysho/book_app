@@ -1,10 +1,37 @@
 h1 {
-  font-size: 35px;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.book h2 {
+#search {
   font-size: 20px;
+  color:#eeeeee;
+}
+
+#count {
+  margin-top: 20px;
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #00adb5;
+}
+
+#title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#title a {
+  font-size: 25px;
   padding: 5px;
+  color: #00adb5;
+}
+
+#title {
+  font-size: 15px;
+  padding: 5px;
+  color: #00adb5;
 }
 
 .book p {
@@ -14,12 +41,89 @@ h1 {
   margin-bottom: 2px;
 }
 
+#img_url {
+  margin-top: 10px;
+}
+
 .book {
-  height: 600px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
+}
+
+.book div {
+  height: 900px;
+  width: 400px;
   background-color: #393e46;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  margin-top: 30px;
+}
+
+#searchForm {
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  height: 300px;
+  width: 300px;
+  font-size: 25px;
+  background: #00adb5;
+  padding: 10px 10px 20px 10px;
+  box-shadow: 10px 10px 8px #888888;
+  border: 1px solid #BFBFBF;
+}
+
+#updateForm {
+  display: inline-block;
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 15px;
+  height: 60px;
+  width: 400px;
+  font-size: 15px;
+  background: #00adb5;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+}
+
+#labels { 
+  display: inline-block;
+  text-align: center;
+}
+
+#error {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.view-title {
+  font-size: 20px;
+  padding: 5px;
+  color: #00adb5;
+  margin-top: 20px;
+}
+
+#updateButton {
+  margin-top: 20px;
+  color: #eeeeee;
+  background-color: #393e46;
+  border: none;
+}
+
+#deleteButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #eeeeee;
+  background-color: #393e46;
+  font-size: 15px;
+}
+
+#returnButton {
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #eeeeee;
+  font-size: 30px;
+}
+
+#searchForm div {
+  margin-top: 80px;
 }

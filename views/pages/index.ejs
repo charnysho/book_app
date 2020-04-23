@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/reset.css">
   <link rel="stylesheet" type="text/css" href="styles/base.css">
   <title>Server parsed HTML Form</title>
 </head>
 <body>
-  <h1>Search</h1>
-  <a href="searches/new">New search</a>
-  <div><b>Total books: </b> <%= count %></div>
+  <h1>Best books!</h1>
+  <a id="search" href="searches/new">New search</a>
+  <div id="count"><b>Total books: </b> <%= count %></div>
   <% books.forEach(function(book){ %>
     <%- include('../partials/detail', { book }) %>
   <% }) %>
-</h
+</body>
+</html>

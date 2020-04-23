@@ -1,2 +1,23 @@
-<a href="/"><h2>Return</h2></a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../styles/reset.css">
+  <link rel="stylesheet" type="text/css" href="../styles/base.css">
+  <title>Book Details</title>
+</head>
+<body>
+<a href="/"><h2 id="returnButton">Return</h2></a>
 <%- include('../partials/detail', { book }) %>
+
+<%- include('../partials/bookForm', { formAction:"update", book }) %>
+
+<% let action = `/books/${book.id}?_method=DELETE` %>
+<form action="<%= action %>" method="POST">
+  <button id="deleteButton" type="submit">Delete book</button>
+</form>
+
+</body>
+</html>
